@@ -7,6 +7,7 @@ const devConfig = (mode: string) =>
   mode === "development" && {
     server: {
       // host: "local.domain.co.kr", // 인증서 발급을 위한 도메인
+      host: '0.0.0.0',
       port: 5173,
     },
   };
