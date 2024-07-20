@@ -1,3 +1,5 @@
+import { cn } from "@coucoudas/ui";
 export default function SignInPage() {
-  return <div>Sign in</div>;
+  const container = {};
+  return <div className={cn(container)}>Sign in</div>;
 }
