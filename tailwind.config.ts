@@ -1,4 +1,6 @@
+import convention from "@coucoudas/ui/tailwind.config";
 import type { Config } from "tailwindcss";
+const { content, theme } = convention;
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,7 +9,5 @@ export default {
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  theme: {
-    extend: {},
-  },
+  theme,
 } satisfies Config;
