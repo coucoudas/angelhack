@@ -16,6 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Touch .env
+        run: |
+          touch ./.env
+          echo "VITE_API_ORIGIN=${{ secrets.VITE_API_ORIGIN }}" >> ./.env
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
