@@ -8,6 +8,7 @@ import { cn } from "@coucoudas/ui";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment-timezone";
+import Footer from "@/components/Footer";
 
 export default function ItemPage() {
   const { itemId } = useParams();
@@ -117,6 +118,7 @@ export default function ItemPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
