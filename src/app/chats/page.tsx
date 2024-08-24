@@ -2,7 +2,7 @@ import { cn, OnClick } from "@coucoudas/ui";
 import { useEffect } from "react";
 import moment from "moment-timezone";
 import useUser from "@/hook/useUser";
-import { images } from "@/asset/Images";
+import { images } from "@/asset/images";
 import { useNavigate } from "react-router-dom";
 import useChat from "@/hook/useChat";
 import useSign from "@/hook/useSign";
