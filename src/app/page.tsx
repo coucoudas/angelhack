@@ -8,12 +8,6 @@ export default function RootPage() {
   const router = useNavigate();
   const { user } = useSignStore();
 
-  useEffect(() => {
-    if (!user) {
-      alert("로그인이 필요합니다.");
-      router("/sign-in");
-    }
-  }, [user]);
   const layout = {
     sizes: "w-full min-h-screen",
   };
