@@ -78,7 +78,7 @@ function ChatBox({
           <div className="w-10 h-10 overflow-hidden rounded-full">
             <img src={`/images/users/${images[profile]}`} />
           </div>
-          <div>
+          <div className="flex flex-col items-start">
             <div>{name}</div>
             <div>{message}</div>
           </div>
