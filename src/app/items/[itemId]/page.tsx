@@ -11,6 +11,7 @@ import moment from "moment-timezone";
 
 export default function ItemPage() {
   const { itemId } = useParams();
+  const router = useNavigate();
   const item = items.find((item) => item.id === Number(itemId));
   const { name, amount, discount, image } = item ?? {};
   const itemNumer = getRandomInteger(1, 12);
@@ -18,11 +19,11 @@ export default function ItemPage() {
     (amount ?? 0) - Math.round(((amount ?? 0) / 100) * (discount ?? 0))
   ).toLocaleString();
 
-  const randomItems = getRandomItems(5, Number(itemId));
+  const randomItems = getRandomItems(11, Number(itemId));
   return (
     <div>
       {image ? (
-        <img src={image} />
+        <img src={`/images/items/${image}`} className="w-full" />
       ) : (
         <NoData
           script="NO IMAGE"
@@ -31,8 +32,16 @@ export default function ItemPage() {
       )}
       <div className="flex flex-col bg-gray-100 gap-y-2">
         <div className="flex px-4 flex-col bg-white">
-          <div className=" pt-3 text-[#111111] text-[18px] font-pretendard-bold">
-            {name}
+          <div className="flex items-end justify-between">
+            <div className="pt-3 text-[#111111] text-[18px] font-pretendard-bold">
+              {name}
+            </div>
+            <button
+              onClick={() => router(`/items/${Number(item?.id)}/reviews`)}
+              className="text-white bg-[#346AFF] w-[72px] h-[26px] text-[12px] flex justify-center items-center rounded-md"
+            >
+              리뷰
+            </button>
           </div>
           <div className="h-8 text-[#637381] text-[14px]">
             원산지: 상세페이지 참조
@@ -44,8 +53,15 @@ export default function ItemPage() {
                 {itemNumer}개
               </div>
             </div>
-            <div className="flex justify-end items-center">
-              {image && <img src={image} />}
+            <div className="flex justify-end items-center gap-x-4">
+              {image && (
+                <div className="w-12 h-12 flex justify-center">
+                  <img
+                    src={`/images/items/${image}`}
+                    className="max-w-12 h-12"
+                  />
+                </div>
+              )}
               <button className="text-blue-500">{">"}</button>
             </div>
           </div>
@@ -130,10 +146,14 @@ function ItemBoxSmall({ item }: { item: Item }) {
           }}
         />
       ) : (
-        <img src={image} />
+        <div className="w-[112px] h-[112px] flex justify-center">
+          <img src={`/images/items/${image}`} className=" max-h-[112px]" />
+        </div>
       )}
       <div className="flex flex-col">
-        <div className="text-[14px] leading-tight mt-3">{name}</div>
+        <div className="text-[14px] leading-tight mt-3 flex justify-start">
+          {name}
+        </div>
         <div className="flex text-[#AE0000] text-[14px] mt-1">
           <div className="font-pretendard-bold ">{price}</div>
           <div>원</div>
