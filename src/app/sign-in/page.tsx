@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   cn,
   Button,
@@ -10,9 +10,12 @@ import {
 } from "@coucoudas/ui";
 import { useActionStore } from "@coucoudas/ui/store";
 import { useNavigate } from "react-router-dom";
+import useSignStore from "@/store/signStore";
+import isSigned from "@/util/isSigned";
 
 export default function SignInPage() {
   const router = useNavigate();
+  const { signIn, user } = useSignStore();
   const { setModal, clearModal } = useActionStore();
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -29,6 +32,11 @@ export default function SignInPage() {
     ["아이디 찾기", () => router("/find/username")],
     ["비밀번호 찾기", () => router("/find/password")],
   ];
+  useEffect(() => {
+    if (user) {
+      router("/");
+    }
+  }, []);
 
   return (
     <Action.Show
@@ -70,7 +78,12 @@ export default function SignInPage() {
           <Button
             title="로그인 하기"
             onClick={() => {
-              setModal("alert");
+              const user = isSigned({ username, email: username, password });
+              if (!user) return setModal("alert");
+              else {
+                signIn(user);
+                router("/");
+              }
             }}
           />
           <div className="flex items-center gap-x-4">
