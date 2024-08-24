@@ -15,9 +15,11 @@
     "@types/lodash": "^4.17.7",
     "axios-wizard": "^1.0.0",
     "lodash": "^4.17.21",
+    "moment-timezone": "^0.5.45",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.0",
+    "react-spring": "^9.7.4",
     "vite-plugin-mkcert": "^1.17.5",
     "zustand": "^4.5.4"
   },
