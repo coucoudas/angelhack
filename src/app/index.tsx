@@ -6,6 +6,7 @@ import SignInPage from "./sign-in/page";
 import SignUpPage from "./sign-up/page";
 import FindUsername from "./find/username/page";
 import FindPassword from "./find/password/page";
+import MyPage from "./mypage/page";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="username" element={<FindUsername />} />
           <Route path="password" element={<FindPassword />} />
         </Route>
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="*" element={<_404 />} />
       </Routes>
     </BrowserRouter>
