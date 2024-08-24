@@ -1,7 +1,9 @@
-import { cn } from "@coucoudas/ui";
+import { Action, cn } from "@coucoudas/ui";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import Navigator from "./Navigator";
+import Overlay from "./Overlay";
 
 export default function Layout() {
   const layout = {
@@ -13,14 +15,17 @@ export default function Layout() {
     displays: "flex flex-col",
   };
   return (
-    <div className="flex justify-center bg-gray-200">
-      <div className={cn(layout)}>
-        <Header />
-        <div className={cn(body)}>
-          <Outlet />
+    <Action.Show actions={[["overlay", <Overlay />]]}>
+      <div className="flex justify-center bg-gray-200">
+        <div className={cn(layout)}>
+          <Header />
+          <div className={cn(body)}>
+            <Outlet />
+          </div>
+          <Footer />
         </div>
-        <Footer />
+        <Navigator />
       </div>
-    </div>
+    </Action.Show>
   );
 }

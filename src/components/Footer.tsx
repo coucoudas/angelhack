@@ -6,8 +6,8 @@ export default function Footer() {
     displays: "flex flex-col items-center",
     backgrounds: "bg-[#EEEEEE]",
     texts: "text-[#555555] text-[11px]",
-    sizes: "w-full h-80",
-    boundaries: "px-12 pt-12",
+    sizes: "w-full ",
+    boundaries: "px-12 pt-16 pb-28",
   };
   const contents = [
     "회사소개",
@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
         <div>Copyright © Coupang Corp. 2010-2024 All Rights Reserved.</div>
       </div>
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-end mt-12">
         <Svg.Logo.Coucoudas />
       </div>
     </div>

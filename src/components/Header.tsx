@@ -1,19 +1,23 @@
 import Svg from "@/asset/SVG";
 import useSignStore from "@/store/signStore";
-import { Button, cn } from "@coucoudas/ui";
+import { Action, Button, cn } from "@coucoudas/ui";
+import { useActionStore } from "@coucoudas/ui/store";
 import { useNavigate } from "react-router-dom";
+import Overlay from "./Overlay";
 
 export default function Header() {
   const router = useNavigate();
   const { user, signOut } = useSignStore();
+  const { setView } = useActionStore();
   const container = {
-    positions: "fixed top-0 left-0",
+    positions: "fixed top-0 left-0 z-40",
     displays: "flex justify-center",
     sizes: "w-full h-14",
     backgrounds: "bg-white",
   };
   const block = {
     sizes: "w-full h-14",
+    backgrounds: "bg-white",
   };
   const body = {
     displays: "flex items-center justify-between ",
@@ -21,11 +25,11 @@ export default function Header() {
     boundaries: "px-[8.5px]",
   };
   return (
-    <>
+    <div>
       <div className={cn(block)} />
       <div className={cn(container)}>
         <div className={cn(body)}>
-          <Svg.Logo.Coucoudas />
+          <Svg.Logo.Coucoudas onClick={() => router("/")} />
           <div className="flex gap-x-2">
             {!user ? (
               <Button
@@ -58,21 +62,11 @@ export default function Header() {
                     boundaries: "border border-gray-300 rounded-[6px]",
                   }}
                 />
-                <Button
-                  title="시작하기"
-                  onClick={() => router("/items")}
-                  option={{
-                    width: "w-[58px]",
-                    height: "h-6",
-                    background: "bg-gray-black",
-                    text: "text-white text-[12px]",
-                  }}
-                />
               </div>
             )}
             <Button
               title="고객센터"
-              onClick={() => router("/supports")}
+              onClick={() => router("/support")}
               option={{
                 width: "w-12",
                 height: "h-6",
@@ -83,6 +77,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
