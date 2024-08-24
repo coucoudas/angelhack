@@ -18,7 +18,7 @@ export default function RootPage() {
     sizes: "w-full min-h-screen",
   };
   return (
-    <div className={cn(layout)}>
+    <div>
       <Header />
       <iframe src="https://www.coupang.com" className={cn(layout)} />
     </div>
