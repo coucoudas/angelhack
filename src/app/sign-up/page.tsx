@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cn, Button, CheckBox, Input } from "@coucoudas/ui";
+import { cn, Button, CheckBox, Input, Shelf } from "@coucoudas/ui";
 import { useNavigate } from "react-router-dom";
 
 export default function SignInPage() {
@@ -13,15 +13,12 @@ export default function SignInPage() {
     displays: "flex flex-col justify-center items-center",
     sizes: "w-full min-h-screen",
   };
-  const container = {
-    displays: "flex flex-col gap-y-4",
-  };
 
   return (
     <div className={cn(layout)}>
-      <div className={cn(container)}>
+      <Shelf.Col className={"gap-y-4"}>
         <div className="text-2xl text-black font-pretendard-bold font-bold">
-          회원가입
+          SIGN UP
         </div>
         <div className="flex gap-x-2 text-[14px]">
           <div>이미 아이디가 있으신가요?</div>
@@ -67,7 +64,7 @@ export default function SignInPage() {
         />
         <CheckBox title="개인정보제공동의" state={[agree, setAgree]} />
         <Button title="회원가입" onClick={() => {}} />
-      </div>
+      </Shelf.Col>
     </div>
   );
 }
