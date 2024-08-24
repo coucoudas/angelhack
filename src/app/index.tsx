@@ -9,6 +9,11 @@ import FindPassword from "./find/password/page";
 import MyPage from "./mypage/page";
 import RootLayout from "./layout";
 import SupportPage from "./supports/page";
+import ChatsPage from "./chats/page";
+import ItemsPage from "./items/page";
+import ItemPage from "./items/[itemId]/page";
+import ChatPage from "./chats/[chatId]/page";
+import Layout from "@/components/Layout";
 
 export default function App() {
   return (
@@ -22,6 +27,14 @@ export default function App() {
           <Route path="/find">
             <Route path="username" element={<FindUsername />} />
             <Route path="password" element={<FindPassword />} />
+          </Route>
+          <Route path="/items" element={<Layout />}>
+            <Route index element={<ItemsPage />} />
+            <Route path=":itemId" element={<ItemPage />} />
+          </Route>
+          <Route path="/chats" element={<Layout />}>
+            <Route index element={<ChatsPage />} />
+            <Route path=":chatId" element={<ChatPage />} />
           </Route>
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/supports" element={<SupportPage />} />
