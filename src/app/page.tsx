@@ -1,4 +1,4 @@
-import Header from "@/components/common/Header";
+import Header from "@/components/Header";
 import useSignStore from "@/store/signStore";
 import { cn } from "@coucoudas/ui";
 import { useEffect } from "react";
