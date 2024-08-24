@@ -22,7 +22,6 @@ export default function Layout() {
           <div className={cn(body)}>
             <Outlet />
           </div>
-          <Footer />
         </div>
         <Navigator />
       </div>

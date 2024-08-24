@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import NoData from "@/components/NoData";
 import db from "@/db";
 import { Item } from "@/interface";
@@ -12,11 +13,12 @@ export default function ItemsPage() {
       {db.items.map((item) => (
         <ItemBox key={item.id} item={item} />
       ))}
+      <Footer />
     </div>
   );
 }
 
-function ItemBox({ item }: { item: Item }) {
+export function ItemBox({ item }: { item: Item }) {
   const router = useNavigate();
   const box = {
     displays: "flex gap-x-2.5 md:gap-7.5 lg:gap-12 items-center",
