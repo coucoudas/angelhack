@@ -1,6 +1,9 @@
-const Coucoudas = () => {
+import { OnClick } from "@coucoudas/ui";
+
+const Coucoudas = ({ onClick }: { onClick?: OnClick }) => {
   return (
     <svg
+      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       width="138"
       height="24"
