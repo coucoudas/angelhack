@@ -16,7 +16,10 @@ export default ({ mode }: ConfigEnv) => {
   console.log(`running ${mode} mode!`);
   return defineConfig({
     ...devConfig(mode),
-    plugins: [react(), mode === "development" && mkcert()],
+    plugins: [
+      react(),
+      // mode === "development" && mkcert()
+    ],
     resolve: {
       alias: [
         { find: "@components", replacement: "/src/components" },
