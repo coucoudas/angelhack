@@ -1,6 +1,8 @@
-import { users } from "./users";
+import { items } from "./item";
+import { users } from "./user";
 const db = {
-  users: users,
+  users,
+  items,
 };
 
 export default db;
