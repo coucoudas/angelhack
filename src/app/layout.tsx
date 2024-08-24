@@ -1,10 +1,14 @@
 import { cn } from "@coucoudas/ui";
-import { ReactNode } from "react";
+import { Outlet } from "react-router-dom";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout() {
   const container = {
     sizes: "w-full min-h-screen",
     fonts: "font-pretendard-medium",
   };
-  return <div className={cn(container)}>{children}</div>;
+  return (
+    <div className={cn(container)}>
+      <Outlet />
+    </div>
+  );
 }
