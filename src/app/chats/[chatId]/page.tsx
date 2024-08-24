@@ -42,19 +42,15 @@ export default function ChatPage() {
   };
   useEffect(() => {
     const inputElement = inputRef.current;
-    if (inputElement) {
+    if (inputElement)
       inputElement.addEventListener("keydown", handleEnterPress);
-    }
     return () => {
-      if (inputElement) {
+      if (inputElement)
         inputElement.removeEventListener("keydown", handleEnterPress);
-      }
     };
   }, []);
   useEffect(() => {
-    if (isSuccess) {
-      setChat("");
-    }
+    if (isSuccess) setChat("");
   }, [isSuccess]);
   const nowItem = item(Number(chatInfo?.item_id));
   return (
