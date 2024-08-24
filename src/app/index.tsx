@@ -14,6 +14,8 @@ import ItemsPage from "./items/page";
 import ItemPage from "./items/[itemId]/page";
 import ChatPage from "./chats/[chatId]/page";
 import Layout from "@/components/Layout";
+import ReviewPage from "./items/[itemId]/reviews/page";
+import QuestionPage from "./items/[itemId]/question/page";
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
           <Route path="/items" element={<Layout />}>
             <Route index element={<ItemsPage />} />
             <Route path=":itemId" element={<ItemPage />} />
+            <Route path=":itemId/reviews" element={<ReviewPage />} />
+            <Route path=":itemId/question" element={<QuestionPage />} />
           </Route>
           <Route path="/chats" element={<Layout />}>
             <Route index element={<ChatsPage />} />
