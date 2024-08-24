@@ -162,7 +162,7 @@ export default function Overlay({ showAction }: OverlayProps) {
           {contents.map((content) => (
             <button
               onClick={content.onClick}
-              className="flex items-center h-15 border-b gap-x-4"
+              className="flex items-center h-15 border-b gap-x-4 w-full"
             >
               <div className="w-6 h-6">{content.icon}</div>
               <div className="text-">{content.title}</div>
