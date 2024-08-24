@@ -13,7 +13,6 @@ export default function SignInPage() {
     displays: "flex flex-col justify-center items-center",
     sizes: "w-full min-h-screen",
   };
-
   return (
     <div className={cn(layout)}>
       <Shelf.Col className={"gap-y-4"}>

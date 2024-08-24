@@ -1,3 +1,8 @@
+import { useDelay } from "@/hook";
+
 export default function RootPage() {
-  return <div>This is Index Page</div>;
+  const { nowTime } = useDelay({
+    callBack: () => console.log("done"),
+  });
+  return <div>{nowTime}</div>;
 }
