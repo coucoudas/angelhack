@@ -7,7 +7,7 @@ export default function Header() {
   const router = useNavigate();
   const { user, signOut } = useSignStore();
   const container = {
-    positions: "absolute top-0 left-0",
+    positions: "fixed top-0 left-0",
     displays: "flex justify-center",
     sizes: "w-full h-14",
     backgrounds: "bg-white",
@@ -18,6 +18,7 @@ export default function Header() {
   const body = {
     displays: "flex items-center justify-between ",
     sizes: "w-full max-w-[1020px] h-full",
+    boundaries: "px-[8.5px]",
   };
   return (
     <>
@@ -57,18 +58,18 @@ export default function Header() {
                     boundaries: "border border-gray-300 rounded-[6px]",
                   }}
                 />
+                <Button
+                  title="시작하기"
+                  onClick={() => router("/items")}
+                  option={{
+                    width: "w-[58px]",
+                    height: "h-6",
+                    background: "bg-gray-black",
+                    text: "text-white text-[12px]",
+                  }}
+                />
               </div>
             )}
-            {/* <Button
-              title="회원가입"
-              onClick={() => signOut()}
-              option={{
-                width: "w-12",
-                height: "h-6",
-                background: "bg-transparent",
-                text: "text-gray-black text-[12px]",
-              }}
-            /> */}
             <Button
               title="고객센터"
               onClick={() => router("/supports")}
