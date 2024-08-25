@@ -39,3 +39,14 @@ export interface RoomChatPOSTRequest {
   sender_id: number;
   content: string;
 }
+
+export interface RoomChatListGETResult {
+  room_id: number;
+  sender_id: number;
+  receiver_id: number;
+  content: string;
+}
+export interface RoomChatListGET {
+  message: string;
+  results: RoomChatListGETResult[];
+}

@@ -2,7 +2,7 @@ import { cn, OnClick } from "@coucoudas/ui";
 import { useEffect } from "react";
 import moment from "moment-timezone";
 import useUser from "@/hook/useUser";
-import { images } from "@/asset/images";
+import { images } from "@/asset/_images";
 import { useNavigate } from "react-router-dom";
 import useChat from "@/hook/useChat";
 import useSign from "@/hook/useSign";
@@ -11,7 +11,7 @@ export default function ChatsPage() {
   const router = useNavigate();
   const { user } = useSign();
   const { findByUserId } = useUser();
-  const { chatsData } = useChat();
+  const { chatsData, findListByChatId } = useChat();
   useEffect(() => {
     if (!user) {
       alert("로그인이 필요합니다.");
@@ -44,9 +44,12 @@ export default function ChatsPage() {
         })
         .map((result) => (
           <ChatBox
-            onClick={() => router(`/chats/rooms/list`)}
+            onClick={() => router(`/chats/${result.id}`)}
             name={findByUserId(result.receiver_id)?.name ?? "김쿠팡"}
-            message="마지막으로 온 메시지"
+            message={
+              findListByChatId(result.id)?.content ??
+              "새로운 채팅방이 개설되었습니다."
+            }
             createdAt={moment(result.updated_at).unix()}
           />
         ))}
@@ -83,7 +86,7 @@ function ChatBox({
             <div>{message}</div>
           </div>
         </div>
-        <div>{moment.unix(createdAt).format("오후 HH:mm")}</div>
+        <div>{moment.unix(createdAt).format("HH:mm A")}</div>
       </div>
     </button>
   );

@@ -2,6 +2,7 @@ import { ItemBox } from "@/app/items/page";
 import { chatApi } from "@/connection";
 import useChat from "@/hook/useChat";
 import useItem from "@/hook/useItem";
+import useSchedule from "@/hook/useSchedule";
 import useSign from "@/hook/useSign";
 import { cn } from "@coucoudas/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -17,12 +18,14 @@ export default function ChatPage() {
   const chatInfo = findByChatId(Number(chatId));
   const [chat, setChat] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const [flag, setFlag] = useState<boolean>(false);
   const inputBox = {
     sizes: "w-full h-[56px]",
     boundaries: "rounded-full",
     backgrounds: "bg-gray-50",
     styles: "focus:outline-none pl-6.5",
   };
+
   const { mutate: postChat, isSuccess } = useMutation({
     mutationKey: ["postChat"],
     mutationFn: () =>
@@ -34,7 +37,7 @@ export default function ChatPage() {
   });
   const { data: chatData } = useQuery({
     enabled: !!user,
-    queryKey: ["getChatRooms", isSuccess],
+    queryKey: ["getChatRooms", isSuccess, flag],
     queryFn: () => chatApi.chat.get(Number(chatId)),
   });
   const handleEnterPress = (event: KeyboardEvent) => {
@@ -49,6 +52,13 @@ export default function ChatPage() {
         inputElement.removeEventListener("keydown", handleEnterPress);
     };
   }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFlag((prevFlag) => !prevFlag);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
     if (isSuccess) setChat("");
   }, [isSuccess]);
@@ -123,7 +133,7 @@ function ChatBox({
       <div className="mr-auto rounded-r-xl rounded-t-xl w-full max-w-80 p-4 border border-gray-300 ">
         {message}
       </div>
-      {moment(createdAt).format("YYYY-MM-DD HH:mm")}
+      {moment(createdAt).format("hh:mm A")}
     </div>
   );
 }
