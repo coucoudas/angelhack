@@ -47,7 +47,8 @@ export default function Footer() {
         </div>
         <div>Copyright © Coupang Corp. 2010-2024 All Rights Reserved.</div>
       </div>
-      <div className="w-full flex justify-end mt-12">
+      <div className="w-full flex items-center justify-end mt-12 gap-x-3.5">
+        <img src="/images/logos/cua.png" width={120} />
         <Svg.Logo.Coucoudas />
       </div>
     </div>

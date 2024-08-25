@@ -29,6 +29,7 @@ export default function Header() {
       <div className={cn(block)} />
       <div className={cn(container)}>
         <div className={cn(body)}>
+          {/* <img src="/images/logos/cua.png" width={112} /> */}
           <Svg.Logo.Coucoudas onClick={() => router("/")} />
           <div className="flex gap-x-2">
             {!user ? (

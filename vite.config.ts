@@ -18,7 +18,7 @@ export default ({ mode }: ConfigEnv) => {
     ...devConfig(mode),
     plugins: [
       react(),
-      // mode === "development" && mkcert()
+      //  mode === "development" && mkcert()
     ],
     resolve: {
       alias: [
