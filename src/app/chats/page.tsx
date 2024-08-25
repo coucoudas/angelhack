@@ -44,7 +44,7 @@ export default function ChatsPage() {
         })
         .map((result) => (
           <ChatBox
-            onClick={() => router(`/chats/${result.id}`)}
+            onClick={() => router(`/chats/rooms/list`)}
             name={findByUserId(result.receiver_id)?.name ?? "김쿠팡"}
             message="마지막으로 온 메시지"
             createdAt={moment(result.updated_at).unix()}
